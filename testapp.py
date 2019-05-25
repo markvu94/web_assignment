@@ -71,28 +71,26 @@ def doanhnghiep():
     session["logged"] = False
     return render_template("login_doanhnghiep.html")
 
-@app.route("/yourspace", methods = ["GET"]) 
+@app.route("/yourspace", methods = ["GET","POST"]) 
 def your_space():
   user_list = user_collection.find_one({ "_id" : ObjectId(session["_id"]) })
-  return render_template("your_space.html", user_list = user_list)
-  # if request.method == ["GET"]:
-  #   return render_template ("your_space.html",user_list = user_list)
-  # if request.method == ["POST"]:
-  #   form = request.form 
-  #   new_value = { "$set": {
-  #     "space_name" : form["space_name"],
-  #     "contact_number" : form["contact_number"],
-  #     "address" : {
-  #       "street_number" : form["street_number"],
-  #       "street" : form["street"],
-  #       "district" : form["district"],
-  #     },
-  #     "detail" : form["detail"],
-  #     "price" : form["price"], 
-  #   } }
-  #   user_collection.update_one(user_list,new_value)
-  #   return render_template ("your_space.html",user_list = user_list)
-
+  if request.method == "GET":
+    return render_template ("your_space.html",user_list = user_list)
+  elif request.method == "POST":
+    form = request.form 
+    new_value = { "$set": {
+      "space_name" : form["space_name"],
+      "contact_number" : form["contact_number"],
+      "address" : {
+        "street_number" : form["street_number"],
+        "street" : form["street"],
+        "district" : form["district"],
+      },
+      "detail" : form["detail"],
+      "price" : form["price"], 
+    } }
+    user_collection.update_one(user_list,new_value)
+    return render_template ("your_space.html",user_list = user_list)
 @app.route("/canhan", methods = ["GET","POST"])
 def canhan():
   if "logged" in session:
