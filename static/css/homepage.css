@@ -1,0 +1,22 @@
+html,body {
+  height: 100%;
+}
+
+body {
+  background-image: url(../image/avatar.png);
+  background-size: cover; 
+}
+
+.h-100{
+  height: 100%;
+}
+.width-form {
+  width: 25%;
+}
+.button-size {
+  width: 11rem;
+  height: 5rem;
+}
+.avatar {
+  border-radius: 50%
+}
