@@ -2,6 +2,12 @@
 html,body {
   height: 100%;
 }
+
+body {
+  background-image: url(../image/avatar.png);
+  background-size: cover; 
+}
+
 .w-100 {
   width:100%;
 }
@@ -15,4 +21,5 @@ html,body {
 
 .form-content {
   margin-bottom: 0.5rem;
+  padding-right: 4rem;
 }
