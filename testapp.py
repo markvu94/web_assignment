@@ -8,7 +8,7 @@ app.config["SECRET_KEY"] = "dasd2e12h3h12312i1hjmkb"
 
 @app.route('/')
 def index():
-  return "Hello"
+  return "He"
 
 @app.route('/homepage')                                             
 def test():
