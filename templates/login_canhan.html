@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canhan</title>
+  <style>
+    .form_popup{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <form action="/canhan" method="POST">
+    <label for="input_username">tên tài khoản hoặc email</label>
+    <input id="input_username" type="text" placeholder="username" name="username"> <br><br>
+    <label for="select_type">Bạn đã có tài khoản?</label>
+  
+    <div id="select_type">
+      <input id="register" type="radio" name="type" value="Register" onclick="myFunction1()" required>Chưa, tôi tạo tài khoản mới <br>
+      <input id="sign_in" type="radio" checked name="type" value="Sign In" onclick="myFunction2()" required>Có, mật khẩu của tôi là <br>
+    </div>
+
+    <div class="form_popup" id="open_form">
+      <input type="text" name="full_name" placeholder="your full name?"> <br>  
+      <input type="number" name="age" placeholder="your age?"> <br>
+      <select name="district">
+          <option value="question" selected disabled>Your district?</option>
+          <option value="Ba Đình">Ba Đình</option>
+          <option value="Cầu Giấy">Cầu Giấy</option>
+          <option value="Hoàng Mai">Hoàng Mai</option>
+          <option value="Thanh Xuân">Thanh Xuân</option>
+          <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+        </select> <br>
+      <label for="select_salary">Mức thu nhập 1 tháng hiện nay của bạn?</label>
+      <div id="select_salary">
+        <input type="radio" name="salary" value="under 10m"> Dưới 10 triệu <br>
+        <input type="radio" name="salary" value="between 10m and 20m"> Từ 10 triệu tới 20 triệu <br>
+        <input type="radio" name="salary" value="more than 20m"> trên 20 triệu
+      </div>
+    </div>
+
+    <input type="password" placeholder="password" name="password">
+    
+    <script>
+      function myFunction1() {
+        var x = document.getElementById("register").value;
+        document.getElementById("submit_button").innerHTML = x;
+        document.getElementById("open_form").style.display = "block";
+      }
+      function myFunction2() {
+        var y = document.getElementById("sign_in").value;
+        document.getElementById("submit_button").innerHTML = y;
+        document.getElementById("open_form").style.display = "none";
+      }
+    </script>
+
+    <button type="submit" id="submit_button">Sign In</button>
+  <h1> </h1>
+  </form>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Space</title>
+  <style>
+    .form_popup {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <form action="/log_out">
+    <input type="submit" value="Log Out">
+  </form>
+  <h4>Xin chào: {{ user_list.full_name }}</h4>
+  <h4>Bạn sống ở quận {{ user_list.district }}</h4>
+  <h4>Gợi ý Cospace ở khu vực bạn sống: {{ doanhnghiep_list.space_name }}</h4>
+
+  <form action="/userspace" method="POST">
+    <input type="text" name="search_by_name" placeholder="tên, quận, tính năng ...">
+    <button>Tìm Co Space</button>
+  </form>
+
+  <div class="form_popup" id="open_form">
+    <h4>Kết quả tìm kiếm:</h4>
+    {% for item in search_result %}
+      <h5>{{ item.space_name }}</h5>
+    {% endfor %}
+  </div>
+  
+
+  <button onclick="myFunction1()">Ẩn kết quả / Hiện kết quả</button>
+  
+  <form action="/userspace/search_result" target="_blank" method="POST">
+    <h4>Tìm Co Space theo các tiêu chí:</h4>
+    <label for="district">Quận: </label> <br>
+    <select name="district" id="district" required>
+      <option value="No result">Không tìm theo tiêu chí này</option>
+      <option value="Ba Đình">Ba Đình</option>
+      <option value="Cầu Giấy">Cầu Giấy</option>
+      <option value="Hoàng Mai">Hoàng Mai</option>
+      <option value="Thanh Xuân">Thanh Xuân</option>
+      <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+    </select> <br>
+    <label for="price">Giá tiền theo giờ: </label> <br>
+    <div id="price">
+      <input type="radio" name="price" value="No result" required> Không tìm theo tiêu chí này <br>
+      <input type="radio" name="price" value="Dưới 50000" required> Dưới 50.000 VND/ giờ <br>
+      <input type="radio" name="price" value="Từ 50000 tới 70000" required> Từ 50.000 VND tới 70.000 VND/ giờ <br>
+      <input type="radio" name="price" value="Trên 70000" required> Trên 70.000 VND/ giờ <br>
+    </div>
+    <button>Tìm kiếm</button>
+  </form>
+
+  <script>
+    function myFunction1() {
+      var x = document.getElementById("open_form");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } 
+      else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

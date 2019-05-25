@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Search Result</title>
+  <!-- <style>
+    .space_detail{
+      display: none;
+    }
+  </style> -->
+</head>
+<body>
+  <h2>Kết quả tìm kiếm</h2>
+  <form action="/call_center" method="POST">
+    {% for item in final_result %}
+      <input type="radio" name="choice" value="{{ item.space_name }}" required>{{ item.space_name }}
+        {% if item.space_name != "Không có kết quả" %}
+          <div id="space_detail" class="space_detail">
+            <h4>số điện thoại liên lạc {{ item.contact_number }}</h4>
+            <h4>Địa chỉ là {{ item.address.street_number }}, đường {{ item.address.street }}, quận {{ item.address.district }} </h4>
+            <h4>Chi tiết: {{ item.detail }}</h4>
+            <h4>Giá tiền theo giờ: {{ item.price }}</h4>
+          </div>
+          <!-- <button onclick="myFunction1()">Hiện/Ẩn thông tin chi tiết</button> -->
+        {% endif %}  
+    {% endfor %}
+    <button>Nhận tư vấn</button>
+  </form>
+  <!-- <script>
+    function myFunction1() {
+      var x = document.getElementById("space_detail");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } 
+      else {
+        x.style.display = "none";
+      }
+    }
+  </script> -->
+</body>
+</html>
