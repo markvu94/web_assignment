@@ -1,0 +1,17 @@
+html,body {
+  height: 100%;
+}
+
+body {
+  background-image: url(../image/avatar.png);
+  background-size: cover;
+}
+
+.main-form {
+  width: 50%;
+}
+
+.div-form {
+  margin-bottom: 0.5rem;
+  padding-right: 4rem;
+}

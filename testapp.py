@@ -16,7 +16,7 @@ def test():
 
 @app.route("/doanhnghiep", methods = ["GET","POST"])                  # thêm homepage
 def doanhnghiep():
-  if "logged" in session:
+  if "logged" in session:                                             # chia thành logged doanh nghiệp và logged cá nhân
     if session["logged"] == True:
       return redirect ("/yourspace")
     else:

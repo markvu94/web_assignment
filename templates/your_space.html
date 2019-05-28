@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Your Space</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../static/css/your_space.css">
   <style>
     #space_edit {
       display:none;
@@ -12,34 +17,149 @@
   </style>
 </head>
 <body>
-  <form action="/log_out">
-    <input type="submit" value="Log Out">
-  </form>
-  <h1>đây là {{ user_list.space_name }}</h1>
-  <h1>số điện thoại liên lạc {{ user_list.contact_number }}</h1>
-  <h1>Địa chỉ là {{ user_list.address.street_number }}, đường {{ user_list.address.street }}, quận {{ user_list.address.district }} </h1>
-  <h1>Chi tiết: {{ user_list.detail }}</h1>
-  <h1>Giá tiền theo giờ: {{ user_list.price }}</h1>
+  <div class="d-flex log-out-form align-items-center">
+    <h5 class="col-11 d-flex justify-content-end">Xin chào {{ user_list.space_name }}</h5>
+    <div class="col-1 d-flex justify-content-start">
+      <form action="/log_out">
+        <button class="btn btn-warning">Log Out</button>
+      </form>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <div class="d-flex row justify-content-center align-items-center main-form">
+      <div class="w-100 d-flex justify-content-center div-form">
+        <h2>Thông tin Cospace</h2>
+      </div>
+      <div class="d-flex w-100 div-form">
+        <div class="col-4 w-100 d-flex justify-content-end">
+          <h6>Số điện thoại liên lạc:</h6> 
+        </div>
+        <div class="col-8 w-100 d-flex justify-content-start">
+          <h6 class="w-100">{{ user_list.contact_number }}</h6> 
+        </div>
+      </div>
 
-  <h4>Do you want to edit?</h4>
-  <button onclick="myFunction1()">Yes/No</button>
-  <form id="space_edit" action="/yourspace" method="POST">
-    <input type="text" name="space_name" value="{{ user_list.space_name }}" placeholder="new working space name?"> <br>  
-    <input type="text" name="contact_number" value="{{ user_list.contact_number }}" placeholder="new contact number?" > <br>
-    <input type="text" name="street_number" value="{{ user_list.address.street_number }}" placeholder="new street number?"> <br>
-    <input type="text" name="street" value="{{ user_list.address.street }}" placeholder="new street name?"> <br>
-    <select name="district">
-      <option value="{{ user_list.address.district }}" selected>Your new district?</option>
-      <option value="Ba Đình">Ba Đình</option>
-      <option value="Cầu Giấy">Cầu Giấy</option>
-      <option value="Hoàng Mai">Hoàng Mai</option>
-      <option value="Thanh Xuân">Thanh Xuân</option>
-      <option value="Hoàn Kiếm">Hoàn Kiếm</option>
-    </select> <br>
-    <input type="text" name="detail" value="{{ user_list.detail }}" placeholder="new working space detail?"> <br>
-    <input type="number" name="price" value="{{ user_list.price }}" placeholder="new price per hour?">
-    <button>Update</button>
-  </form>
+      <div class="d-flex w-100 div-form">
+        <div class="col-4 w-100 d-flex justify-content-end">
+          <h6>Địa chỉ:</h6> 
+        </div>
+        <div class="col-8 w-100 d-flex justify-content-start">
+          <h6 class="w-100">{{ user_list.address.street_number }}, đường {{ user_list.address.street }}, quận {{ user_list.address.district }}</h6> 
+        </div>
+      </div>
+
+      <div class="d-flex w-100 div-form">
+        <div class="col-4 w-100 d-flex justify-content-end">
+          <h6>Chi tiết:</h6> 
+        </div>
+        <div class="col-8 w-100 d-flex justify-content-start">
+          <h6 class="w-100">{{ user_list.detail }}</h6> 
+        </div>
+      </div>
+      
+      <div class="d-flex w-100 div-form">
+        <div class="col-4 w-100 d-flex justify-content-end">
+          <h6>Giá tiền theo giờ:</h6> 
+        </div>
+        <div class="col-8 w-100 d-flex justify-content-start">
+          <h6 class="w-100">{{ user_list.price }}</h6> 
+        </div>
+      </div>
+
+      <div class="d-flex w-100 div-form">
+        <div class="col-4 w-100 d-flex justify-content-end">
+          <h6>Bạn muốn sửa thông tin?</h6> 
+        </div>
+        <div class="col-8 w-100 d-flex justify-content-start">
+          <button onclick="myFunction1()">Yes/No</button> 
+        </div>
+      </div>
+
+      <form id="space_edit" class="w-100" action="/yourspace" method="POST">
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Tên Coworking Space mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <input type="text" class="w-100" name="space_name" value="{{ user_list.space_name }}" placeholder="new working space name?"> 
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Số điện thoại mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <input type="text" class="w-100" name="contact_number" value="{{ user_list.contact_number }}" placeholder="new contact number?" > 
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Số nhà mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <input type="text" class="w-100" name="street_number" value="{{ user_list.address.street_number }}" placeholder="new street number?">  
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Tên đường mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <input type="text" class="w-100" name="street" value="{{ user_list.address.street }}" placeholder="new street name?">  
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Tên quận mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <select class="w-100" name="district">
+              <option value="{{ user_list.address.district }}" selected>Your new district?</option>
+              <option value="Ba Đình">Ba Đình</option>
+              <option value="Cầu Giấy">Cầu Giấy</option>
+              <option value="Hoàng Mai">Hoàng Mai</option>
+              <option value="Thanh Xuân">Thanh Xuân</option>
+              <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+            </select>   
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Tính năng mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <input type="text" class="w-100" name="detail" value="{{ user_list.detail }}" placeholder="new working space detail?">  
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            <h6>Đơn giá theo giờ mới?</h6> 
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <input type="number" class="w-100" name="price" value="{{ user_list.price }}" placeholder="new price per hour?">  
+          </div>
+        </div>
+
+        <div class="d-flex w-100 div-form">
+          <div class="col-4 w-100 d-flex justify-content-end">
+            
+          </div>
+          <div class="col-8 w-100 d-flex justify-content-start">
+            <button class="btn btn-primary">Cập nhật thông tin</button>  
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
 <script>
   function myFunction1() {
     var x = document.getElementById("space_edit");
@@ -51,7 +171,6 @@
     }
   }  
 </script>
-  
-  
+
 </body>
 </html>
