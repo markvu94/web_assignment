@@ -3,7 +3,7 @@ html,body {
 }
 
 body {
-  background-image: url(../image/avatar.png);
+  background-image: url(../image/avatar.jpg);
   background-size: cover;
 }
 
@@ -15,9 +15,9 @@ body {
 
 .main-form {
   width: 50%;
+  background-color:  rgba(255, 255, 255, 0.9);
 }
 
 .div-form {
   margin-bottom: 0.5rem;
-  padding-right: 4rem;
 }
