@@ -13,9 +13,16 @@
 </head>
 <body>
   <div class="d-flex justify-content-center h-100 align-items-center">
-    <form class="d-flex justify-content-between width-form">
-      <button class="btn btn-primary btn-lg button-size" formaction="/doanhnghiep" >Doanh Nghiệp</button>
-      <button class="btn btn-primary btn-lg button-size" formaction="/canhan">Cá Nhân</button>
+    <div class="col-6 d-flex justify-content-center">
+      <img id="avatar" style="width:500px;height:500px;" src="../static/image/logo.png" alt="">
+    </div>
+    <form class="d-flex col-6 justify-content-center width-form">
+      <div class="col-6 d-flex justify-content-end">
+        <button class="btn btn-primary btn-lg button-size" formaction="/doanhnghiep" >Doanh Nghiệp</button>
+      </div>
+      <div class="col-6 d-flex justify-content-start">
+        <button class="btn btn-primary btn-lg button-size" formaction="/canhan">Cá Nhân</button>
+      </div>
     </form>
   </div>
 </body>

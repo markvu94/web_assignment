@@ -17,6 +17,7 @@ body {
   width: 11rem;
   height: 5rem;
 }
-.avatar {
-  border-radius: 50%
+
+#avatar {
+  filter: grayscale(80%);
 }
