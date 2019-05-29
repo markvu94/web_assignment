@@ -93,8 +93,8 @@ def your_space():
     return render_template ("your_space.html",user_list = user_list)
 @app.route("/canhan", methods = ["GET","POST"])
 def canhan():
-  if "logged" in session:
-    if session["logged"] == True:
+  if "logged_canhan" in session:
+    if session["logged_canhan"] == True:
       return redirect ("/userspace")
     else:
       if request.method == "GET":
@@ -123,7 +123,7 @@ def canhan():
             }
             canhan_collection.insert_one(new_user)
             session["_id"] = str(new_user["_id"])
-            session["logged"] = True
+            session["logged_canhan"] = True
             return redirect ("/userspace")
         if user_type == "Sign In":
           current_user = canhan_collection.find_one({ "username": username })
@@ -132,12 +132,12 @@ def canhan():
           else:
             if current_user["password"] == password:
               session["_id"] = str(current_user["_id"])
-              session["logged"] = True
+              session["logged_canhan"] = True
               return redirect("/userspace")
             else:
               return redirect("/canhan")  
   else:
-    session["logged"] = False
+    session["logged_canhan"] = False
     return render_template("login_canhan.html")
 
 @app.route ("/userspace", methods = ["GET","POST"])
@@ -209,6 +209,9 @@ def search_result():
 def log_out():
   if "logged" in session:
     session["logged"] = False
+    return render_template ("homepage.html")
+  if "logged_canhan" in session:
+    session["logged_canhan"] = False
     return render_template ("homepage.html")
 
 @app.route ("/call_center", methods = ["POST"])
