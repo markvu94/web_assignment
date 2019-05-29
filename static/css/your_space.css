@@ -9,8 +9,8 @@ body {
 
 .log-out-form {
   height: 6%;
-  background-color: blue;
-  color: yellow
+  background-color: rgba(192, 181, 24, 0.6);
+  color: white;
 }
 
 .main-form {
